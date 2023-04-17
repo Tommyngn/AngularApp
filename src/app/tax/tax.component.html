@@ -1,0 +1,30 @@
+<div class="tax-input-padding">
+    <h1>
+        Input your tax information here
+    </h1>
+    <div class="grid-container">
+        <div class="item1">
+            Name
+        </div>
+        <div class="item2">
+            <input type="text" style="font-size:10pt;height:30px" (keyup)="getName($event)">
+
+        </div>
+    </div>
+    <div class="grid-container">
+        <div class="item1">
+            Tax Number
+        </div>
+        <div class="item2">
+            <input type="text" style="font-size:10pt;height:30px" (keyup)="getNumber($event)">
+
+        </div>
+    </div>
+    <div style="padding-left: 15%;">
+    <button class="button" routerLink="/product" routerLinkActive="Active">
+        <a routerLink="/product/{{taxNumber}}/{{taxName}}" routerLinkActive="Active">
+            Submit
+        </a>
+    </button>
+    </div>
+</div>

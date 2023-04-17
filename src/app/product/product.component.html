@@ -1,0 +1,49 @@
+<h1>
+    Tax Information : {{taxName}} ~ {{ taxPercentage }}
+</h1>
+<h2>
+    Create product
+</h2>
+<form>
+    <label for="product-name">Product Name:</label><br>
+    <input type="text" id="product-name" name="product-name" style="font-size:7pt;height:30px"><br>
+    <label for="lname">Product Price:</label><br>
+    <input type="text" id="lname" name="lname" style="font-size:10pt;height:30px"><br><br>
+    <input class="button" type="submit" value="Submit" (click)="addProduct($event)">
+</form>
+<div class="grid-container">
+    <div class="item1" *ngFor="let product of productList">
+        <div *ngIf="product.edit === false">
+            <h3>
+                {{ product.productName }}
+            </h3>
+            <h3>
+                {{ product.productPrice }}
+            </h3>
+            <h3 *ngIf="product.productTax !== -1">
+                {{ product.productTax }}
+            </h3>
+            <h3 *ngIf="product.productTax === -1">
+                No tax 
+            </h3>
+            <button class="button-product" (click)="addTax(product.productIndex)">
+                Add Tax
+            </button>
+            <button class="button-product" (click)="removeTax(product.productIndex)">
+                Remove Tax
+            </button>
+            <button class="button-product" (click)="switchToEdit(product.productIndex)">
+                Edit
+            </button>
+        </div>
+        <div *ngIf="product.edit === true">
+            <form>
+                <label for="product-name">Product Name:</label><br>
+                <input type="text" id="product-name" name="product-name" style="font-size:7pt;height:30px"><br>
+                <label for="lname">Product Price:</label><br>
+                <input type="text" id="lname" name="lname" style="font-size:10pt;height:30px"><br><br>
+                <input class="button-product" type="submit" value="Submit" (click)="editProduct($event, product.productIndex)">
+            </form>
+        </div>
+    </div>
+</div>
